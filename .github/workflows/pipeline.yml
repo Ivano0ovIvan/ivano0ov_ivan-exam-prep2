@@ -24,8 +24,9 @@ jobs:
     - name: Display SoftUni username
       run: echo "ivano0ov_ivan"
   run_ui_tests:
-    needs: build_test
+    
     runs-on: ubuntu-latest
+    needs: build_tests
     steps:
     - name: Checkout the repository
       uses: actions/checkout@v4
@@ -44,8 +45,9 @@ jobs:
       run: npm run test:ui
       
   deploy_to_production:
-    needs: run_ui_tests
+    
     runs-on: ubuntu-latest
+    needs: run_ui_tests
     steps:
       - name: Deploy to production
         uses: johnbeynon/render-deploy-action@v0.0.8
